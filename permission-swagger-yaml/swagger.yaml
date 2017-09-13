@@ -1,0 +1,111 @@
+---
+swagger: "2.0"
+info:
+  description: "权限管理服务\n"
+  version: "1.0.0"
+  title: "AECWorks BIMServer Permission Service"
+  termsOfService: "http://www.aecworks.cn/terms/"
+  contact:
+    email: "apiteam@aecworks.cn"
+  license:
+    name: "上海开建信息技术有限公司"
+    url: "http://www.AECWorks.cn/licenses"
+host: "developer-dev.api.bimbox.cn"
+basePath: "/permission/v1"
+tags:
+- name: "Catalog"
+  description: "Permission Catalog"
+  externalDocs:
+    description: "Find out more"
+    url: "http://www.aecworks.cn"
+schemes:
+- "http"
+- "https"
+paths:
+  /catalogs:
+    post:
+      tags:
+      - "Catalog"
+      summary: "为当前的 client 创建一个 Permission Catalog"
+      operationId: "addCatalog"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "一个完整的 Permission Catalog 对象"
+        required: true
+        schema:
+          $ref: "#/definitions/PermissionCatalog"
+      responses:
+        401:
+          description: "无法验证Client的身份，请确认已经登录，并获得有效的Token"
+        403:
+          description: "当前Client的授权无法访问请求的资源"
+        405:
+          description: "catalog key 的格式不对, 接受的字符为：字母，下划线和数字"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+          examples:
+            application/json:
+              code: "CatalogKeyInvalid"
+              message: "Catalog Key specified by client"
+        409:
+          description: "当前的 client 下已经有同名的 catalog key"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+          examples:
+            application/json:
+              code: "CatalogKeyExists"
+              message: "Catalog Key specified by client"
+    put:
+      tags:
+      - "Catalog"
+      summary: "为当前的 client 更新指定的 Permission Catalog"
+      operationId: "updateCatalog"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "一个完整的 Permission Catalog 对象"
+        required: true
+        schema:
+          $ref: "#/definitions/PermissionCatalog"
+      responses:
+        401:
+          description: "无法验证Client的身份，请确认已经登录，并获得有效的Token"
+        403:
+          description: "当前Client的授权无法访问请求的资源"
+        404:
+          description: "catalog key 不存在"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+          examples:
+            application/json:
+              code: "CatalogKeyNotFund"
+              message: "Catalog Key specified by client"
+definitions:
+  PermissionCatalog:
+    type: "object"
+    required:
+    - "key"
+    properties:
+      key:
+        type: "string"
+      description:
+        type: "string"
+  ErrorModel:
+    required:
+    - "code"
+    - "message"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"

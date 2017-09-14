@@ -1321,8 +1321,7 @@ try {
   },
   "examples" : {
     "application/json" : {
-      "code" : "CatalogKeyInvalid",
-      "message" : "Catalog Key specified by client"
+      "message" : "CatalogKeyInvalid:my_key_1"
     }
   }
 };
@@ -1363,7 +1362,7 @@ try {
 
 
                                                         <div class="tab-pane" id="examples-Catalog-addCatalog-example">
-                                                            <pre class="prettyprint"><code class="json">{code&#x3D;CatalogKeyInvalid, message&#x3D;Catalog Key specified by client}</code></pre>
+                                                            <pre class="prettyprint"><code class="json">{message&#x3D;CatalogKeyInvalid:my_key_1}</code></pre>
                                                         </div>
 
 
@@ -1412,8 +1411,7 @@ try {
   },
   "examples" : {
     "application/json" : {
-      "code" : "CatalogKeyExists",
-      "message" : "Catalog Key specified by client"
+      "message" : "CatalogKeyConflict:my_key_1"
     }
   }
 };
@@ -1454,7 +1452,7 @@ try {
 
 
                                                         <div class="tab-pane" id="examples-Catalog-addCatalog-example">
-                                                            <pre class="prettyprint"><code class="json">{code&#x3D;CatalogKeyExists, message&#x3D;Catalog Key specified by client}</code></pre>
+                                                            <pre class="prettyprint"><code class="json">{message&#x3D;CatalogKeyConflict:my_key_1}</code></pre>
                                                         </div>
 
 
@@ -1961,97 +1959,6 @@ try {
 
 
 
-                                                <h3> Status: 404 - catalog key 不存在 </h3>
-
-                                                <ul class="nav nav-tabs nav-tabs-examples" >
-
-                                                    <li class="active">
-                                                        <a href="#examples-Catalog-getCatalog-schema">Schema</a>
-                                                    </li>
-
-                                                        <li class="">
-                                                            <a href="#examples-Catalog-getCatalog-example">Response Example</a>
-                                                        </li>
-
-                                                </ul>
-
-
-
-
-
-
-
-                                                <div class="tab-content" style='margin-bottom: 10px;'>
-
-
-
-                                                    <div class="tab-pane active" id="examples-Catalog-getCatalog-schema">
-
-
-
-
-                                                        <div id='examples-Catalog-getCatalog-schema-404' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-
-                                                            <script>
-                                                                $(document).ready(function() {
-                                                                    var schemaWrapper = {
-  "description" : "catalog key 不存在",
-  "schema" : {
-    "$ref" : "#/definitions/ErrorModel"
-  },
-  "examples" : {
-    "application/json" : {
-      "code" : "CatalogKeyNotFund",
-      "message" : "Catalog Key specified by client"
-    }
-  }
-};
-                                                                    var schema = schemaWrapper.schema;
-                                                                    schemaWrapper.definitions = defs;
-                                                                    //console.log(JSON.stringify(schema))
-                                                                    JsonRefs.resolveRefs(schemaWrapper, {
-                                                                        "depth": 3,
-                                                                        "resolveRemoteRefs": false,
-                                                                        "resolveFileRefs": false
-                                                                    }, function(err, resolved, metadata) {
-
-                                                                        //console.log(JSON.stringify(resolved));
-
-
-
-                                                                        var view = new JSONSchemaView(resolved.schema, 3);
-                                                                        $('#examples-Catalog-getCatalog-schema-data').val(JSON.stringify(resolved.schema));
-                                                                        var result = $('#examples-Catalog-getCatalog-schema-404');
-                                                                        result.empty();
-                                                                        result.append(view.render());
-                                                                    });
-
-
-
-
-                                                                });
-                                                            </script>
-                                                        </div>
-                                                        <input id='examples-Catalog-getCatalog-schema-data' type='hidden' value=''></input>
-
-
-
-
-
-
-                                                    </div>
-
-
-                                                        <div class="tab-pane" id="examples-Catalog-getCatalog-example">
-                                                            <pre class="prettyprint"><code class="json">{code&#x3D;CatalogKeyNotFund, message&#x3D;Catalog Key specified by client}</code></pre>
-                                                        </div>
-
-
-                                                </div>
-
-
-
-
 
 
 
@@ -2545,8 +2452,7 @@ try {
   },
   "examples" : {
     "application/json" : {
-      "code" : "CatalogKeyNotFund",
-      "message" : "Catalog Key specified by client"
+      "message" : "NoSuchCatalogKey:my_key_1"
     }
   }
 };
@@ -2587,7 +2493,7 @@ try {
 
 
                                                         <div class="tab-pane" id="examples-Catalog-updateCatalog-example">
-                                                            <pre class="prettyprint"><code class="json">{code&#x3D;CatalogKeyNotFund, message&#x3D;Catalog Key specified by client}</code></pre>
+                                                            <pre class="prettyprint"><code class="json">{message&#x3D;NoSuchCatalogKey:my_key_1}</code></pre>
                                                         </div>
 
 
@@ -2632,7 +2538,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-14T12:24:23.880Z
+                    Generated 2017-09-14T12:36:26.233Z
                 </div>
             </div>
         </div>

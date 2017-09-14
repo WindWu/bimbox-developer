@@ -120,8 +120,8 @@ definitions:
     - "permissionCatalogs"
     properties:
       count:
-        type: "object"
-        properties: {}
+        type: "integer"
+        format: "int32"
       permissionCatalogs:
         type: "array"
         items:

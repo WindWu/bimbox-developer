@@ -745,6 +745,10 @@ margin-bottom: 20px;
     "description" : {
       "type" : "string"
     }
+  },
+  "example" : {
+    "key" : "my_catalog_key",
+    "desctription" : "This key is used by Awesome App"
   }
 };
   </script>
@@ -1528,7 +1532,8 @@ public class CatalogApiExample {
         
         CatalogApi apiInstance = new CatalogApi();
         try {
-            apiInstance.getCatalog();
+            PermissionCatalog result = apiInstance.getCatalog();
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CatalogApi#getCatalog");
             e.printStackTrace();
@@ -1549,7 +1554,8 @@ public class CatalogApiExample {
     public static void main(String[] args) {
         CatalogApi apiInstance = new CatalogApi();
         try {
-            apiInstance.getCatalog();
+            PermissionCatalog result = apiInstance.getCatalog();
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CatalogApi#getCatalog");
             e.printStackTrace();
@@ -1574,7 +1580,10 @@ CatalogApi *apiInstance = [[CatalogApi alloc] init];
 
 // 获取当前 client 所有的 Permission Catalog
 [apiInstance getCatalogWithCompletionHandler: 
-              ^(NSError* error) {
+              ^(PermissionCatalog output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -1592,7 +1601,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.getCatalog(callback);
@@ -1624,7 +1633,8 @@ namespace Example
             try
             {
                 // 获取当前 client 所有的 Permission Catalog
-                apiInstance.getCatalog();
+                PermissionCatalog result = apiInstance.getCatalog();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1646,7 +1656,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new io.swagger.client\Api\CatalogApi();
 
 try {
-    $api_instance->getCatalog();
+    $result = $api_instance->getCatalog();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CatalogApi->getCatalog: ', $e->getMessage(), PHP_EOL;
 }
@@ -1680,6 +1691,12 @@ try {
                                                         <a href="#examples-Catalog-getCatalog-schema">Schema</a>
                                                     </li>
 
+                                                        <li class="">
+                                                            <a href="#examples-Catalog-getCatalog-example">Response Example</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="#examples-Catalog-getCatalog-example">Response Example</a>
+                                                        </li>
 
                                                 </ul>
 
@@ -1703,7 +1720,14 @@ try {
                                                             <script>
                                                                 $(document).ready(function() {
                                                                     var schemaWrapper = {
-  "$ref" : "#/definitions/PermissionCatalog"
+  "description" : "",
+  "schema" : {
+    "$ref" : "#/definitions/PermissionCatalog"
+  },
+  "examples" : {
+    "key" : "my_catalog_key",
+    "desctription" : "This key is used by Awesome App"
+  }
 };
                                                                     var schema = schemaWrapper.schema;
                                                                     schemaWrapper.definitions = defs;
@@ -1741,6 +1765,12 @@ try {
                                                     </div>
 
 
+                                                        <div class="tab-pane" id="examples-Catalog-getCatalog-example">
+                                                            <pre class="prettyprint"><code class="json">my_catalog_key</code></pre>
+                                                        </div>
+                                                        <div class="tab-pane" id="examples-Catalog-getCatalog-example">
+                                                            <pre class="prettyprint"><code class="json">This key is used by Awesome App</code></pre>
+                                                        </div>
 
 
                                                 </div>
@@ -2571,7 +2601,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-14T11:31:47.585Z
+                    Generated 2017-09-14T11:42:59.017Z
                 </div>
             </div>
         </div>

@@ -770,6 +770,9 @@ margin-bottom: 20px;
                                     <li data-group="Catalog" data-name="addCatalog" class="">
                                         <a href="#api-Catalog-addCatalog">addCatalog</a>
                                     </li>
+                                    <li data-group="Catalog" data-name="getCatalog" class="">
+                                        <a href="#api-Catalog-getCatalog">getCatalog</a>
+                                    </li>
                                     <li data-group="Catalog" data-name="updateCatalog" class="">
                                         <a href="#api-Catalog-updateCatalog">updateCatalog</a>
                                     </li>
@@ -1447,6 +1450,565 @@ try {
 
 
 
+                                    <div id="api-Catalog-getCatalog">
+
+                                        <article id="api-Catalog-getCatalog-0" data-group="User" data-name="getCatalog" data-version="0">
+                                            <div class="pull-left">
+                                                <h1>getCatalog</h1>
+                                                <p>获取当前 client 所有的 Permission Catalog</p>
+                                            </div>
+                                            <div class="pull-right">
+
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                            <p></p>
+                                            <p class="marked"></p>
+                                            <p></p>
+                                            <br />
+
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/catalogs</span></code></pre>
+
+                                            <p>
+                                                <h3>Usage and SDK Samples</h3>
+                                            </p>
+
+                                            <ul class="nav nav-tabs nav-tabs-examples">
+                                                <li class="active">
+                                                    <a href="#examples-Catalog-getCatalog-0-curl">Curl</a>
+                                                </li>
+                                                <li class="">
+              <a href="#examples-Catalog-getCatalog-0-java">Java</a>
+            </li>
+            <li class="">
+              <a href="#examples-Catalog-getCatalog-0-android">Android</a>
+            </li>
+            <!--<li class="">
+              <a href="#examples-Catalog-getCatalog-0-groovy">Groovy</a>
+            </li>-->
+                                                <li class="">
+                                                    <a href="#examples-Catalog-getCatalog-0-objc">Obj-C</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="#examples-Catalog-getCatalog-0-javascript">JavaScript</a>
+                                                </li>
+                                                <!--<li class="">
+              <a href="#examples-Catalog-getCatalog-0-angular">Angular</a>
+            </li>-->
+                                                <li class="">
+                                                    <a href="#examples-Catalog-getCatalog-0-csharp">C#</a>
+                                                </li>
+                                                <li class="">
+              <a href="#examples-Catalog-getCatalog-0-php">PHP</a>
+            </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="examples-Catalog-getCatalog-0-curl">
+                                                    <pre class="prettyprint"><code class="language-bsh">
+curl -X <span style="text-transform: uppercase;">get</span> "http://developer-dev.api.bimbox.cn/permission/v1/catalogs"
+
+
+</code></pre>
+                                                </div>
+
+                                                <div class="tab-pane" id="examples-Catalog-getCatalog-0-java">
+                                                  <pre class="prettyprint"><code class="language-java">
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import .CatalogApi;
+
+import java.io.File;
+import java.util.*;
+
+public class CatalogApiExample {
+
+    public static void main(String[] args) {
+        
+        CatalogApi apiInstance = new CatalogApi();
+        try {
+            apiInstance.getCatalog();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#getCatalog");
+            e.printStackTrace();
+        }
+    }
+}
+
+                                                  </code></pre>
+          </div>
+
+
+                                                <div class="tab-pane" id="examples-Catalog-getCatalog-0-android">
+                                                  <pre class="prettyprint"><code class="language-java">
+import .CatalogApi;
+
+public class CatalogApiExample {
+
+    public static void main(String[] args) {
+        CatalogApi apiInstance = new CatalogApi();
+        try {
+            apiInstance.getCatalog();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CatalogApi#getCatalog");
+            e.printStackTrace();
+        }
+    }
+}
+
+                                                  </code></pre>
+          </div>
+
+          <!--
+          <div class="tab-pane" id="examples-Catalog-getCatalog-0-groovy">
+            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+          </div> -->
+
+
+                                                <div class="tab-pane" id="examples-Catalog-getCatalog-0-objc">
+                                                    <pre class="prettyprint"><code class="language-cpp">
+
+
+CatalogApi *apiInstance = [[CatalogApi alloc] init];
+
+// 获取当前 client 所有的 Permission Catalog
+[apiInstance getCatalogWithCompletionHandler: 
+              ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+
+                                                    </code></pre>
+                                                </div>
+                                                <div class="tab-pane" id="examples-Catalog-getCatalog-0-javascript">
+                                                    <pre class="prettyprint"><code class="language-js">
+var  = require('');
+
+var api = new .CatalogApi()
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getCatalog(callback);
+
+                                                    </code></pre>
+                                                </div>
+
+                                                <!--<div class="tab-pane" id="examples-Catalog-getCatalog-0-angular">
+            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+          </div>-->
+
+                                                <div class="tab-pane" id="examples-Catalog-getCatalog-0-csharp">
+                                                    <pre class="prettyprint"><code class="language-cs">
+using System;
+using System.Diagnostics;
+using .Api;
+using .Client;
+using ;
+
+namespace Example
+{
+    public class getCatalogExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new CatalogApi();
+
+            try
+            {
+                // 获取当前 client 所有的 Permission Catalog
+                apiInstance.getCatalog();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling CatalogApi.getCatalog: " + e.Message );
+            }
+        }
+    }
+}
+
+                                                    </code></pre>
+                                                </div>
+
+
+                                                <div class="tab-pane" id="examples-Catalog-getCatalog-0-php">
+                                                  <pre class="prettyprint"><code class="language-php">
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new io.swagger.client\Api\CatalogApi();
+
+try {
+    $api_instance->getCatalog();
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->getCatalog: ', $e->getMessage(), PHP_EOL;
+}
+
+                                                  </code></pre>
+          </div>
+
+                                            </div>
+
+
+
+
+
+                                            <h2>Parameters</h2>
+
+
+
+
+
+
+
+
+
+                                            <h2>Responses</h2>
+
+                                                <h3> Status: 200 -  </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Catalog-getCatalog-schema">Schema</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Catalog-getCatalog-schema">
+
+
+
+
+                                                        <div id='examples-Catalog-getCatalog-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "$ref" : "#/definitions/PermissionCatalog"
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Catalog-getCatalog-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Catalog-getCatalog-schema-200');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Catalog-getCatalog-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
+                                                <h3> Status: 401 - 无法验证Client的身份，请确认已经登录，并获得有效的Token </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Catalog-getCatalog-schema">Schema</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Catalog-getCatalog-schema">
+
+
+
+
+                                                        <div id='examples-Catalog-getCatalog-schema-401' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "无法验证Client的身份，请确认已经登录，并获得有效的Token"
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Catalog-getCatalog-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Catalog-getCatalog-schema-401');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Catalog-getCatalog-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
+                                                <h3> Status: 403 - 当前Client的授权无法访问请求的资源 </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Catalog-getCatalog-schema">Schema</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Catalog-getCatalog-schema">
+
+
+
+
+                                                        <div id='examples-Catalog-getCatalog-schema-403' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "当前Client的授权无法访问请求的资源"
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Catalog-getCatalog-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Catalog-getCatalog-schema-403');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Catalog-getCatalog-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
+                                                <h3> Status: 404 - catalog key 不存在 </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Catalog-getCatalog-schema">Schema</a>
+                                                    </li>
+
+                                                        <li class="">
+                                                            <a href="#examples-Catalog-getCatalog-example">Response Example</a>
+                                                        </li>
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Catalog-getCatalog-schema">
+
+
+
+
+                                                        <div id='examples-Catalog-getCatalog-schema-404' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "catalog key 不存在",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorModel"
+  },
+  "examples" : {
+    "application/json" : {
+      "code" : "CatalogKeyNotFund",
+      "message" : "Catalog Key specified by client"
+    }
+  }
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Catalog-getCatalog-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Catalog-getCatalog-schema-404');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Catalog-getCatalog-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+                                                        <div class="tab-pane" id="examples-Catalog-getCatalog-example">
+                                                            <pre class="prettyprint"><code class="json">{code&#x3D;CatalogKeyNotFund, message&#x3D;Catalog Key specified by client}</code></pre>
+                                                        </div>
+
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+                                        </article>
+
+                                    </div>
+
+                                    <hr>
+
+
+
+
+
+
+
+
                                     <div id="api-Catalog-updateCatalog">
 
                                         <article id="api-Catalog-updateCatalog-0" data-group="User" data-name="updateCatalog" data-version="0">
@@ -2009,7 +2571,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-13T17:12:54.100Z
+                    Generated 2017-09-14T11:31:47.585Z
                 </div>
             </div>
         </div>

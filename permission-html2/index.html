@@ -753,6 +753,15 @@ margin-bottom: 20px;
     "desctription" : "This key is used by Awesome App"
   }
 };
+  defs.PermissionCatalogDataWrapper = {
+  "type" : "object",
+  "required" : [ "data" ],
+  "properties" : {
+    "data" : {
+      "$ref" : "#/definitions/PermissionCatalogs"
+    }
+  }
+};
   defs.PermissionCatalogs = {
   "type" : "object",
   "required" : [ "count", "permissionCatalogs" ],
@@ -1712,9 +1721,6 @@ try {
                                                         <li class="">
                                                             <a href="#examples-Catalog-getCatalog-example">Response Example</a>
                                                         </li>
-                                                        <li class="">
-                                                            <a href="#examples-Catalog-getCatalog-example">Response Example</a>
-                                                        </li>
 
                                                 </ul>
 
@@ -1743,8 +1749,18 @@ try {
     "$ref" : "#/definitions/PermissionCatalogDataWrapper"
   },
   "examples" : {
-    "key" : "my_catalog_key",
-    "desctription" : "This key is used by Awesome App"
+    "application/json" : {
+      "data" : {
+        "count" : 2,
+        "permissionCatalogs" : [ {
+          "key" : "my_key_1",
+          "desctription" : "the description for my_key_1"
+        }, {
+          "key" : "my_key_2",
+          "desctription" : "the description for my_key_2"
+        } ]
+      }
+    }
   }
 };
                                                                     var schema = schemaWrapper.schema;
@@ -1784,10 +1800,7 @@ try {
 
 
                                                         <div class="tab-pane" id="examples-Catalog-getCatalog-example">
-                                                            <pre class="prettyprint"><code class="json">my_catalog_key</code></pre>
-                                                        </div>
-                                                        <div class="tab-pane" id="examples-Catalog-getCatalog-example">
-                                                            <pre class="prettyprint"><code class="json">This key is used by Awesome App</code></pre>
+                                                            <pre class="prettyprint"><code class="json">{data&#x3D;{count&#x3D;2, permissionCatalogs&#x3D;[{key&#x3D;my_key_1, desctription&#x3D;the description for my_key_1}, {key&#x3D;my_key_2, desctription&#x3D;the description for my_key_2}]}}</code></pre>
                                                         </div>
 
 
@@ -2619,7 +2632,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-14T12:04:17.909Z
+                    Generated 2017-09-14T12:24:23.880Z
                 </div>
             </div>
         </div>

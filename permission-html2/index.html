@@ -740,15 +740,33 @@ margin-bottom: 20px;
   "required" : [ "key" ],
   "properties" : {
     "key" : {
-      "type" : "string"
+      "type" : "string",
+      "description" : "Permission Catalog的 key， 用来标识和组织一组 Permission。接受的字符为：字母和数字，分隔符为下划线 _ 。第一个字符不能够是下划线 _ 。"
     },
     "description" : {
-      "type" : "string"
+      "type" : "string",
+      "description" : "对 Permission Catalog 的简短描述"
     }
   },
   "example" : {
     "key" : "my_catalog_key",
     "desctription" : "This key is used by Awesome App"
+  }
+};
+  defs.PermissionCatalogs = {
+  "type" : "object",
+  "required" : [ "count", "permissionCatalogs" ],
+  "properties" : {
+    "count" : {
+      "type" : "object",
+      "properties" : { }
+    },
+    "permissionCatalogs" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/PermissionCatalog"
+      }
+    }
   }
 };
   </script>
@@ -1532,7 +1550,7 @@ public class CatalogApiExample {
         
         CatalogApi apiInstance = new CatalogApi();
         try {
-            PermissionCatalog result = apiInstance.getCatalog();
+            PermissionCatalogDataWrapper result = apiInstance.getCatalog();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CatalogApi#getCatalog");
@@ -1554,7 +1572,7 @@ public class CatalogApiExample {
     public static void main(String[] args) {
         CatalogApi apiInstance = new CatalogApi();
         try {
-            PermissionCatalog result = apiInstance.getCatalog();
+            PermissionCatalogDataWrapper result = apiInstance.getCatalog();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CatalogApi#getCatalog");
@@ -1580,7 +1598,7 @@ CatalogApi *apiInstance = [[CatalogApi alloc] init];
 
 // 获取当前 client 所有的 Permission Catalog
 [apiInstance getCatalogWithCompletionHandler: 
-              ^(PermissionCatalog output, NSError* error) {
+              ^(PermissionCatalogDataWrapper output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -1633,7 +1651,7 @@ namespace Example
             try
             {
                 // 获取当前 client 所有的 Permission Catalog
-                PermissionCatalog result = apiInstance.getCatalog();
+                PermissionCatalogDataWrapper result = apiInstance.getCatalog();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1722,7 +1740,7 @@ try {
                                                                     var schemaWrapper = {
   "description" : "",
   "schema" : {
-    "$ref" : "#/definitions/PermissionCatalog"
+    "$ref" : "#/definitions/PermissionCatalogDataWrapper"
   },
   "examples" : {
     "key" : "my_catalog_key",
@@ -2601,7 +2619,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-14T11:42:59.017Z
+                    Generated 2017-09-14T12:04:17.909Z
                 </div>
             </div>
         </div>

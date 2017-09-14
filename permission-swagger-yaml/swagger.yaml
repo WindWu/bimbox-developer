@@ -33,7 +33,12 @@ paths:
       parameters: []
       responses:
         200:
-          $ref: "#/definitions/PermissionCatalog"
+          description: ""
+          schema:
+            $ref: "#/definitions/PermissionCatalog"
+          examples:
+            key: "my_catalog_key"
+            desctription: "This key is used by Awesome App"
         401:
           description: "无法验证Client的身份，请确认已经登录，并获得有效的Token"
         403:
@@ -122,6 +127,9 @@ definitions:
         type: "string"
       description:
         type: "string"
+    example:
+      key: "my_catalog_key"
+      desctription: "This key is used by Awesome App"
   ErrorModel:
     required:
     - "code"

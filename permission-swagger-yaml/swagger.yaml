@@ -49,14 +49,6 @@ paths:
           description: "无法验证Client的身份，请确认已经登录，并获得有效的Token"
         403:
           description: "当前Client的授权无法访问请求的资源"
-        404:
-          description: "catalog key 不存在"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-          examples:
-            application/json:
-              code: "CatalogKeyNotFund"
-              message: "Catalog Key specified by client"
     post:
       tags:
       - "Catalog"
@@ -84,16 +76,14 @@ paths:
             $ref: "#/definitions/ErrorModel"
           examples:
             application/json:
-              code: "CatalogKeyInvalid"
-              message: "Catalog Key specified by client"
+              message: "CatalogKeyInvalid:my_key_1"
         409:
           description: "当前的 client 下已经有同名的 catalog key"
           schema:
             $ref: "#/definitions/ErrorModel"
           examples:
             application/json:
-              code: "CatalogKeyExists"
-              message: "Catalog Key specified by client"
+              message: "CatalogKeyConflict:my_key_1"
     put:
       tags:
       - "Catalog"
@@ -121,8 +111,7 @@ paths:
             $ref: "#/definitions/ErrorModel"
           examples:
             application/json:
-              code: "CatalogKeyNotFund"
-              message: "Catalog Key specified by client"
+              message: "NoSuchCatalogKey:my_key_1"
 definitions:
   PermissionCatalogs:
     type: "object"
@@ -144,16 +133,6 @@ definitions:
     properties:
       data:
         $ref: "#/definitions/PermissionCatalogs"
-  ErrorModel:
-    required:
-    - "code"
-    - "message"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      message:
-        type: "string"
   PermissionCatalog:
     type: "object"
     required:
@@ -169,3 +148,13 @@ definitions:
     example:
       key: "my_catalog_key"
       desctription: "This key is used by Awesome App"
+  ErrorModel:
+    required:
+    - "code"
+    - "message"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"

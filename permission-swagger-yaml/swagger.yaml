@@ -37,8 +37,14 @@ paths:
           schema:
             $ref: "#/definitions/PermissionCatalogDataWrapper"
           examples:
-            key: "my_catalog_key"
-            desctription: "This key is used by Awesome App"
+            application/json:
+              data:
+                count: 2
+                permissionCatalogs:
+                - key: "my_key_1"
+                  desctription: "the description for my_key_1"
+                - key: "my_key_2"
+                  desctription: "the description for my_key_2"
         401:
           description: "无法验证Client的身份，请确认已经登录，并获得有效的Token"
         403:
@@ -131,6 +137,13 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/PermissionCatalog"
+  PermissionCatalogDataWrapper:
+    type: "object"
+    required:
+    - "data"
+    properties:
+      data:
+        $ref: "#/definitions/PermissionCatalogs"
   ErrorModel:
     required:
     - "code"

@@ -23,6 +23,29 @@ schemes:
 - "https"
 paths:
   /catalogs:
+    get:
+      tags:
+      - "Catalog"
+      summary: "获取当前 client 所有的 Permission Catalog"
+      operationId: "getCatalog"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          $ref: "#/definitions/PermissionCatalog"
+        401:
+          description: "无法验证Client的身份，请确认已经登录，并获得有效的Token"
+        403:
+          description: "当前Client的授权无法访问请求的资源"
+        404:
+          description: "catalog key 不存在"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+          examples:
+            application/json:
+              code: "CatalogKeyNotFund"
+              message: "Catalog Key specified by client"
     post:
       tags:
       - "Catalog"

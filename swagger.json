@@ -1,0 +1,457 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "url" : "http://developer-dev.api.bimbox.cn/permission/v1"
+  }, {
+    "url" : "https://developer-dev.api.bimbox.cn/permission/v1"
+  } ],
+  "info" : {
+    "description" : "权限管理服务\n",
+    "version" : "1.0.0",
+    "title" : "AECWorks BIMServer Permission Service",
+    "termsOfService" : "http://www.aecworks.cn/terms/",
+    "contact" : {
+      "email" : "apiteam@aecworks.cn"
+    },
+    "license" : {
+      "name" : "上海开建信息技术有限公司",
+      "url" : "http://www.AECWorks.cn/licenses"
+    }
+  },
+  "tags" : [ {
+    "name" : "Catalog",
+    "description" : "Permission Catalog",
+    "externalDocs" : {
+      "description" : "Find out more",
+      "url" : "http://www.aecworks.cn"
+    }
+  }, {
+    "name" : "Permission",
+    "description" : "Permission",
+    "externalDocs" : {
+      "description" : "Find out more",
+      "url" : "http://www.aecworks.cn"
+    }
+  } ],
+  "paths" : {
+    "/catalogs" : {
+      "post" : {
+        "tags" : [ "Catalog" ],
+        "summary" : "为当前的 client 创建一个 Permission Catalog",
+        "operationId" : "addCatalog",
+        "responses" : {
+          "200" : {
+            "description" : "创建成功，并在返回创建的的 Permission Catalog 对象",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
+                }
+              }
+            }
+          },
+          "401" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+          },
+          "403" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+          },
+          "405" : {
+            "description" : "catalog key 的格式不对, 接受的字符为：字母，下划线和数字",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "message" : "CatalogKeyInvalid:my_key_1"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "当前的 client 下已经有同名的 catalog key",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "message" : "CatalogKeyConflict:my_key_1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/PermissionCatalog"
+        }
+      },
+      "put" : {
+        "tags" : [ "Catalog" ],
+        "summary" : "为当前的 client 更新指定的 Permission Catalog",
+        "operationId" : "updateCatalog",
+        "responses" : {
+          "401" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+          },
+          "403" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+          },
+          "404" : {
+            "description" : "catalog key 不存在",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "code" : "NoSuchCatalogKey",
+                      "message" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/PermissionCatalog"
+        }
+      },
+      "get" : {
+        "tags" : [ "Catalog" ],
+        "summary" : "获取当前 client 所有的 Permission Catalog",
+        "operationId" : "getCatalogs",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "data" : {
+                        "count" : 2,
+                        "permissionCatalogs" : [ {
+                          "key" : "my_key_1",
+                          "desctription" : "the description for my_key_1"
+                        }, {
+                          "key" : "my_key_2",
+                          "desctription" : "the description for my_key_2"
+                        } ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+          },
+          "403" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+          }
+        }
+      }
+    },
+    "/catalogs/{catalogKey}" : {
+      "get" : {
+        "summary" : "Get a user by ID",
+        "tags" : [ "Catalog" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "catalogKey",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true,
+          "description" : "Numeric ID of the user to get"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "data" : {
+                        "count" : 2,
+                        "permissionCatalogs" : [ {
+                          "key" : "my_key_1",
+                          "desctription" : "the description for my_key_1"
+                        }, {
+                          "key" : "my_key_2",
+                          "desctription" : "the description for my_key_2"
+                        } ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/permissions" : {
+      "post" : {
+        "tags" : [ "Permission" ],
+        "summary" : "为当前的 client 创建一个 Permission Catalog",
+        "operationId" : "addPermission",
+        "responses" : {
+          "401" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+          },
+          "403" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+          },
+          "405" : {
+            "description" : "catalog key 的格式不对, 接受的字符为：字母，下划线和数字",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "message" : "CatalogKeyInvalid:my_key_1"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "当前的 client 下已经有同名的 catalog key",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "message" : "CatalogKeyConflict:my_key_1"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/PermissionCatalog"
+        }
+      },
+      "put" : {
+        "tags" : [ "Permission" ],
+        "summary" : "为当前的 client 更新指定的 Permission Catalog",
+        "operationId" : "updatePermission",
+        "responses" : {
+          "401" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+          },
+          "403" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+          },
+          "404" : {
+            "description" : "catalog key 不存在",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "code" : "NoSuchCatalogKey",
+                      "message" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Permission"
+              }
+            }
+          },
+          "description" : "一个完整的 Permission Catalog 对象",
+          "required" : true
+        }
+      },
+      "get" : {
+        "tags" : [ "Permission" ],
+        "summary" : "获取当前 client 所有的 Permission Catalog",
+        "operationId" : "getPermission",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "data" : {
+                        "count" : 2,
+                        "permissionCatalogs" : [ {
+                          "key" : "my_key_1",
+                          "desctription" : "the description for my_key_1"
+                        }, {
+                          "key" : "my_key_2",
+                          "desctription" : "the description for my_key_2"
+                        } ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+          },
+          "403" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "PermissionCatalog" : {
+        "type" : "object",
+        "required" : [ "key" ],
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "description" : "Permission Catalog的 key， 用来标识和组织一组 Permission。接受的字符为：字母和数字，分隔符为下划线 _ 。第一个字符不能够是下划线 _ 。",
+            "minimum" : 4,
+            "maximum" : 128,
+            "example" : "bimbox_document_access_catalog_v1"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "对 Permission Catalog 的简短描述",
+            "maximum" : 512,
+            "example" : "BIMBox App使用这个Catalog来管理和控制文档的访问权限。"
+          }
+        }
+      },
+      "Permission" : {
+        "type" : "object",
+        "required" : [ "key", "catalogKey", "bitIndex", "code" ],
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "description" : "",
+            "minimum" : 4,
+            "maximum" : 128,
+            "example" : ""
+          },
+          "catalogKey" : {
+            "type" : "string",
+            "description" : "",
+            "minimum" : 4,
+            "maximum" : 128,
+            "example" : ""
+          },
+          "bitIndex" : {
+            "type" : "integer",
+            "format" : "int32",
+            "description" : "",
+            "example" : 4
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "description" : "",
+            "example" : 32
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "",
+            "maximum" : 512,
+            "example" : ""
+          }
+        }
+      },
+      "PermissionCatalogs" : {
+        "type" : "object",
+        "required" : [ "count", "permissionCatalogs" ],
+        "properties" : {
+          "count" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "permissionCatalogs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PermissionCatalog"
+            }
+          }
+        }
+      },
+      "PermissionCatalogsDataWrapper" : {
+        "type" : "object",
+        "required" : [ "data" ],
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/PermissionCatalogs"
+          }
+        }
+      },
+      "PermissionCatalogDataWrapper" : {
+        "type" : "object",
+        "required" : [ "data" ],
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/PermissionCatalog"
+          }
+        }
+      }
+    },
+    "requestBodies" : {
+      "PermissionCatalog" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/PermissionCatalog"
+            }
+          }
+        },
+        "description" : "一个完整的 Permission Catalog 对象",
+        "required" : true
+      }
+    }
+  }
+}

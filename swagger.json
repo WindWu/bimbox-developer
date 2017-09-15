@@ -449,7 +449,7 @@
             }
           }
         },
-        "description" : "一个完整的 Permission Catalog 对象",
+        "description" : "一个 Permission Catalog 对象",
         "required" : true
       }
     }

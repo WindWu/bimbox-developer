@@ -80,12 +80,9 @@
                 "schema" : {
                   "$ref" : "#components/schemas/ErrorModel"
                 },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "message" : "CatalogKeyConflict:my_key_1"
-                    }
-                  }
+                "example" : {
+                  "code" : "abc",
+                  "message" : "CatalogKeyConflict:my_key_1"
                 }
               }
             }

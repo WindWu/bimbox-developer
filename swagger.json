@@ -364,7 +364,7 @@
         "properties" : {
           "key" : {
             "type" : "string",
-            "description" : "Permission Catalog的 key， 用来标识和组织一组 Permission。接受的字符为：字母和数字，分隔符为下划线 _ 。第一个字符不能够是下划线 _ 。",
+            "description" : "Permission Catalog的 key， 用来标识和组织一组 Permission。接受的字符为：字母和数字，分隔符为下划线 _。",
             "minimum" : 4,
             "maximum" : 128,
             "example" : "bimbox_document_access_catalog_v1"

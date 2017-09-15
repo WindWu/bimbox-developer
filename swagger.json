@@ -61,7 +61,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#components/definitions/ErrorModel"
+                  "$ref" : "#components/schemas/ErrorModel"
                 },
                 "examples" : {
                   "response" : {
@@ -78,7 +78,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#components/definitions/ErrorModel"
+                  "$ref" : "#components/schemas/ErrorModel"
                 },
                 "examples" : {
                   "response" : {
@@ -121,7 +121,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#components/definitions/ErrorModel"
+                  "$ref" : "#components/schemas/ErrorModel"
                 },
                 "example" : {
                   "responses" : {

@@ -111,8 +111,56 @@ paths:
             $ref: "#/definitions/ErrorModel"
           examples:
             application/json:
-              message: "NoSuchCatalogKey:my_key_1"
+              code: "NoSuchCatalogKey"
+              message: ""
 definitions:
+  PermissionCatalog:
+    type: "object"
+    required:
+    - "key"
+    properties:
+      key:
+        type: "string"
+        example: "bimbox_document_access_catalog_v1"
+        description: "Permission Catalog的 key， 用来标识和组织一组 Permission。接受的字符为：字母和数字，分\
+          隔符为下划线 _ 。第一个字符不能够是下划线 _ 。"
+      description:
+        type: "string"
+        example: "BIMBox App使用这个Catalog来管理和控制文档的访问权限。"
+        description: "对 Permission Catalog 的简短描述"
+    example:
+      key: "my_catalog_key"
+      desctription: "This key is used by Awesome App"
+  Permission:
+    type: "object"
+    required:
+    - "bitIndex"
+    - "catalogKey"
+    - "code"
+    - "key"
+    properties:
+      key:
+        type: "string"
+        example: ""
+        description: ""
+      catalogKey:
+        type: "string"
+        example: ""
+        description: ""
+      bitIndex:
+        type: "integer"
+        format: "int32"
+        example: 4
+        description: ""
+      code:
+        type: "integer"
+        format: "int32"
+        example: 32
+        description: ""
+      description:
+        type: "string"
+        example: ""
+        description: ""
   PermissionCatalogs:
     type: "object"
     required:
@@ -133,24 +181,25 @@ definitions:
     properties:
       data:
         $ref: "#/definitions/PermissionCatalogs"
-  PermissionCatalog:
-    type: "object"
-    required:
-    - "key"
-    properties:
-      key:
-        type: "string"
-        description: "Permission Catalog的 key， 用来标识和组织一组 Permission。接受的字符为：字母和数字，分\
-          隔符为下划线 _ 。第一个字符不能够是下划线 _ 。"
-      description:
-        type: "string"
-        description: "对 Permission Catalog 的简短描述"
-    example:
-      key: "my_catalog_key"
-      desctription: "This key is used by Awesome App"
   ErrorModel:
     required:
     - "message"
     properties:
+      code:
+        type: "string"
+        example: "NoSuchObject"
+        description: "错误代码，采用 Pascal 命名规则，能够简短的表达错误原因。客户端可以使用该错误代码做国际化相关工作。"
       message:
         type: "string"
+        example: "请求的资源不存在，该资源标识为：some_resource_id。可以将此信息告诉应用的开发人员。"
+        description: "能够直接展示给用户的错误原因的描述，默认语言为中文。"
+      developerMessage:
+        type: "string"
+        example: "服务端接收到的Object Key 为：my_object_key。请仔细检查Key的字符和编码格式是否跟客户端请求的一致。如果\
+          一致，请确认创建过该Object Key。如果不一致，可以考虑编码格式。Object Key 需要采用 URL-SAFE 的字符，否则在 http\
+          \ 请求中，某些字符会被转意，或者是截断。"
+        description: "为开发人员提供的详细的错误原因的描述，方便开发人员进行调试和差错。默认语言为中文。"
+      moreInfo:
+        type: "string"
+        example: "https://developer.aecworks.cn/appName/serviceName/errors/errorCode"
+        description: "如果必要，这里会有关于该错误的一些详细信息，一般是一个web页面的链接。"

@@ -214,13 +214,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ErrorModel"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "message" : "CatalogKeyInvalid:my_key_1"
-                    }
-                  }
                 }
               }
             }
@@ -231,13 +224,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ErrorModel"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "message" : "CatalogKeyConflict:my_key_1"
-                    }
-                  }
                 }
               }
             }
@@ -264,14 +250,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ErrorModel"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "code" : "NoSuchCatalogKey",
-                      "message" : ""
-                    }
-                  }
                 }
               }
             }
@@ -300,22 +278,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "data" : {
-                        "count" : 2,
-                        "permissionCatalogs" : [ {
-                          "key" : "my_key_1",
-                          "desctription" : "the description for my_key_1"
-                        }, {
-                          "key" : "my_key_2",
-                          "desctription" : "the description for my_key_2"
-                        } ]
-                      }
-                    }
-                  }
                 }
               }
             }

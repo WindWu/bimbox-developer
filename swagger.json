@@ -41,7 +41,7 @@
         "operationId" : "addCatalog",
         "responses" : {
           "200" : {
-            "description" : "创建成功，并在返回创建的的 Permission Catalog 对象",
+            "description" : "创建成功，并返回创建的 Permission Catalog 对象",
             "content" : {
               "application/json" : {
                 "schema" : {

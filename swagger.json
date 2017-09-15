@@ -175,7 +175,7 @@
             "type" : "string"
           },
           "required" : true,
-          "description" : "Numeric ID of the user to get"
+          "description" : "希望获取的 Permission Catalog 的key"
         } ],
         "responses" : {
           "200" : {
@@ -191,10 +191,19 @@
         }
       }
     },
-    "/permissions" : {
+    "/catalogs/{catalogKey}/permissions" : {
       "post" : {
         "tags" : [ "Permission" ],
-        "summary" : "为当前的 client 创建一个 Permission Catalog",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "catalogKey",
+          "schema" : {
+            "type" : "string"
+          },
+          "required" : true,
+          "description" : "希望获取的 Permission Catalog 的key"
+        } ],
+        "summary" : "为当前的 client 创建一个 Permission",
         "operationId" : "addPermission",
         "responses" : {
           "200" : {
@@ -268,7 +277,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                  "$ref" : "#/components/schemas/ErrorModel"
                 },
                 "examples" : {
                   "response" : {

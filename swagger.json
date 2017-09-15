@@ -81,7 +81,7 @@
                   "$ref" : "#components/schemas/ErrorModel"
                 },
                 "example" : {
-                  "code" : "abc",
+                  "code" : "",
                   "message" : "CatalogKeyConflict:my_key_1"
                 }
               }

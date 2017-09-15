@@ -348,12 +348,12 @@
           "message" : {
             "type" : "string",
             "description" : "能够直接展示给用户的错误原因的描述，默认语言为中文。",
-            "example" : "请求的资源不存在，该资源标识为：some_resource_id。可以将此信息告诉应用的开发人员。"
+            "example" : "-> 请求的资源不存在，该资源标识为：some_resource_id。可以将此信息告诉应用的开发人员。"
           },
           "developerMessage" : {
             "type" : "string",
             "description" : "为开发人员提供的详细的错误原因的描述，方便开发人员进行调试和差错。默认语言为中文。",
-            "example" : "服务端接收到的Object Key 为：my_object_key。请仔细检查Key的字符和编码格式是否跟客户端请求的一致。如果一致，请确认创建过该Object Key。如果不一致，可以考虑编码格式。Object Key 需要采用 URL-SAFE 的字符，否则在 http 请求中，某些字符会被转意，或者是截断。"
+            "example" : "服务端接收到的Object Key   为：my_object_key。请仔细检查Key的字符和编码格式是否跟客户端请求的一致。如果一致，请确认创建过该Object Key。如果不一致，可以考虑编码格式。Object Key 需要采用 URL-SAFE 的字符，否则在 http 请求中，某些字符会被转意，或者是截断。"
           },
           "moreInfo" : {
             "type" : "string",

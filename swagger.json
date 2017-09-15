@@ -149,23 +149,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "data" : {
-                        "count" : 2,
-                        "permissionCatalogs" : [ {
-                          "key" : "my_key_1",
-                          "desctription" : "the description for my_key_1"
-                        }, {
-                          "key" : "my_key_2",
-                          "desctription" : "the description for my_key_2"
-                        } ]
-                      }
-                    }
-                  }
+                  "$ref" : "#/components/schemas/PermissionCatalogsDataWrapper"
                 }
               }
             }
@@ -199,22 +183,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "data" : {
-                        "count" : 2,
-                        "permissionCatalogs" : [ {
-                          "key" : "my_key_1",
-                          "desctription" : "the description for my_key_1"
-                        }, {
-                          "key" : "my_key_2",
-                          "desctription" : "the description for my_key_2"
-                        } ]
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -228,6 +196,16 @@
         "summary" : "为当前的 client 创建一个 Permission Catalog",
         "operationId" : "addPermission",
         "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PermissionDataWrapper"
+                }
+              }
+            }
+          },
           "401" : {
             "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
           },
@@ -377,6 +355,41 @@
           }
         }
       },
+      "PermissionCatalogs" : {
+        "type" : "object",
+        "required" : [ "count", "permissionCatalogs" ],
+        "properties" : {
+          "count" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 1
+          },
+          "permissionCatalogs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PermissionCatalog"
+            }
+          }
+        }
+      },
+      "PermissionCatalogDataWrapper" : {
+        "type" : "object",
+        "required" : [ "data" ],
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/PermissionCatalog"
+          }
+        }
+      },
+      "PermissionCatalogsDataWrapper" : {
+        "type" : "object",
+        "required" : [ "data" ],
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/PermissionCatalogs"
+          }
+        }
+      },
       "Permission" : {
         "type" : "object",
         "required" : [ "key", "catalogKey", "bitIndex", "code" ],
@@ -415,38 +428,38 @@
           }
         }
       },
-      "PermissionCatalogs" : {
+      "Permissions" : {
         "type" : "object",
-        "required" : [ "count", "permissionCatalogs" ],
+        "required" : [ "count", "permissions" ],
         "properties" : {
           "count" : {
             "type" : "integer",
             "format" : "int32",
             "example" : 1
           },
-          "permissionCatalogs" : {
+          "permissions" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/PermissionCatalog"
+              "$ref" : "#/components/schemas/Permission"
             }
           }
         }
       },
-      "PermissionCatalogsDataWrapper" : {
+      "PermissionDataWrapper" : {
         "type" : "object",
         "required" : [ "data" ],
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/PermissionCatalogs"
+            "$ref" : "#/components/schemas/Permission"
           }
         }
       },
-      "PermissionCatalogDataWrapper" : {
+      "PermissionsDataWrapper" : {
         "type" : "object",
         "required" : [ "data" ],
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/PermissionCatalog"
+            "$ref" : "#/components/schemas/Permissions"
           }
         }
       }

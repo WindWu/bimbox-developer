@@ -95,40 +95,6 @@
           "$ref" : "#/components/requestBodies/PermissionCatalog"
         }
       },
-      "put" : {
-        "tags" : [ "Catalog" ],
-        "summary" : "为当前的 client 更新指定的 Permission Catalog",
-        "operationId" : "updateCatalog",
-        "responses" : {
-          "401" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
-          },
-          "403" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
-          },
-          "404" : {
-            "description" : "catalog key 不存在",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "code" : "NoSuchCatalogKey",
-                      "message" : ""
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody" : {
-          "$ref" : "#/components/requestBodies/PermissionCatalog"
-        }
-      },
       "get" : {
         "tags" : [ "Catalog" ],
         "summary" : "获取当前 client 所有的 Permission Catalog",
@@ -209,6 +175,50 @@
               }
             }
           }
+        }
+      },
+      "put" : {
+        "tags" : [ "Catalog" ],
+        "summary" : "为当前的 client 更新指定的 Permission Catalog",
+        "operationId" : "updateCatalog",
+        "responses" : {
+          "200" : {
+            "description" : "更新成功，并在返回更新后的 Permission Catalog 对象",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PermissionCatalogDataWrapper"
+                }
+              }
+            }
+          },
+          "401" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+          },
+          "403" : {
+            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+          },
+          "404" : {
+            "description" : "catalog key 不存在",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                },
+                "examples" : {
+                  "response" : {
+                    "value" : {
+                      "code" : "NoSuchCatalogKey",
+                      "message" : ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/PermissionCatalog"
         }
       }
     },

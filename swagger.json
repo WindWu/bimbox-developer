@@ -421,7 +421,8 @@
         "properties" : {
           "count" : {
             "type" : "integer",
-            "format" : "int32"
+            "format" : "int32",
+            "example" : 1
           },
           "permissionCatalogs" : {
             "type" : "array",

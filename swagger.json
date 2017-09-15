@@ -51,17 +51,17 @@
             }
           },
           "401" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+            "$ref" : "#components/responses/UnauthorizedError"
           },
           "403" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+            "$ref" : "#components/responses/ForbiddenError"
           },
           "405" : {
             "description" : "catalog key 的格式不对, 接受的字符为：字母，下划线和数字",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                  "$ref" : "#components/definitions/ErrorModel"
                 },
                 "examples" : {
                   "response" : {
@@ -78,7 +78,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                  "$ref" : "#components/definitions/ErrorModel"
                 },
                 "examples" : {
                   "response" : {
@@ -111,17 +111,17 @@
             }
           },
           "401" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+            "$ref" : "#components/responses/UnauthorizedError"
           },
           "403" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+            "$ref" : "#components/responses/ForbiddenError"
           },
           "404" : {
             "description" : "catalog key 不存在",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/definitions/ErrorModel"
+                  "$ref" : "#components/definitions/ErrorModel"
                 },
                 "example" : {
                   "responses" : {
@@ -156,10 +156,10 @@
             }
           },
           "401" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+            "$ref" : "#components/responses/UnauthorizedError"
           },
           "403" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+            "$ref" : "#components/responses/ForbiddenError"
           }
         }
       }
@@ -217,10 +217,10 @@
             }
           },
           "401" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+            "$ref" : "#components/responses/UnauthorizedError"
           },
           "403" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+            "$ref" : "#components/responses/ForbiddenError"
           },
           "405" : {
             "description" : "catalog key 的格式不对, 接受的字符为：字母，下划线和数字",
@@ -267,10 +267,10 @@
         "operationId" : "updatePermission",
         "responses" : {
           "401" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+            "$ref" : "#components#/responses/UnauthorizedError"
           },
           "403" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+            "$ref" : "#components/responses/ForbiddenError"
           },
           "404" : {
             "description" : "catalog key 不存在",
@@ -335,10 +335,10 @@
             }
           },
           "401" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/UnauthorizedError"
+            "$ref" : "#components/responses/UnauthorizedError"
           },
           "403" : {
-            "$ref" : "https://api.swaggerhub.com/domains/WindWu/aecworks-bimserver/v1#/responses/ForbiddenError"
+            "$ref" : "#components/responses/ForbiddenError"
           }
         }
       }
@@ -497,6 +497,22 @@
             "$ref" : "#/components/schemas/Permissions"
           }
         }
+      }
+    },
+    "responses" : {
+      "GeneralError" : {
+        "description" : "General Error",
+        "$ref" : "#/components/schemas/ErrorModel"
+      },
+      "UnauthorizedError" : {
+        "description" : "无法验证Client的身份，请确认已经登录，并获得有效的Token"
+      },
+      "ForbiddenError" : {
+        "description" : "当前Client的授权无法访问请求的资源"
+      },
+      "ResourceNotFoundError" : {
+        "description" : "请求的资源不存在",
+        "$ref" : "#/components/schemas/ErrorModel"
       }
     },
     "requestBodies" : {

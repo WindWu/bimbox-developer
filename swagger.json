@@ -62,13 +62,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#components/schemas/ErrorModel"
-                },
-                "examples" : {
-                  "response" : {
-                    "value" : {
-                      "message" : "CatalogKeyInvalid:my_key_1"
-                    }
-                  }
                 }
               }
             }
@@ -121,13 +114,9 @@
                   "$ref" : "#components/schemas/ErrorModel"
                 },
                 "example" : {
-                  "responses" : {
-                    "application/json" : {
-                      "code" : "NoSuchCatalogKey",
-                      "message" : "请求的资源不存在，该资源标识为：some_resource_id。可以将此信息告诉应用的开发人员。",
-                      "developerMessage" : "hello"
-                    }
-                  }
+                  "code" : "NoSuchCatalogKey",
+                  "message" : "请求的资源不存在，该资源标识为：some_resource_id。可以将此信息告诉应用的开发人员。",
+                  "developerMessage" : "hello"
                 }
               }
             }
